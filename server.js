@@ -1,4 +1,5 @@
 import express from "express";
+import rootRouter from "./src/routers/root.router.js";
 
 const app = express();
 
@@ -9,6 +10,12 @@ const app = express();
 app.get("", (request, response, next) => {
   response.json("hello world");
 });
+
+// Get Router
+// Gọi user => bắt toàn bộ API
+// rootRouter là 1 callback function
+// app/api/auth/login | register
+app.use("/api", rootRouter);
 
 //  Hàm Listen online 1 cổng
 // Ở đây mình sử dụng cổng 3000
