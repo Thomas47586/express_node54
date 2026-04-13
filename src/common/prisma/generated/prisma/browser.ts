@@ -37,3 +37,18 @@ export type Orders = Prisma.OrdersModel
  * 
  */
 export type Users = Prisma.UsersModel
+/**
+ * Model ChatGroups
+ * 
+ */
+export type ChatGroups = Prisma.ChatGroupsModel
+/**
+ * Model ChatGroupsMembers
+ * 
+ */
+export type ChatGroupsMembers = Prisma.ChatGroupsMembersModel
+/**
+ * Model ChatMessages
+ * 
+ */
+export type ChatMessages = Prisma.ChatMessagesModel

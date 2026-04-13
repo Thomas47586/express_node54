@@ -48,19 +48,71 @@ model Orders {
 }
 
 model Users {
-  id         Int        @id @default(autoincrement())
-  email      String?    @unique @db.VarChar(255)
-  fullName   String?    @db.VarChar(255)
-  avatar     String?    @db.Text
-  age        Int?
-  totpSecret String?    @db.VarChar(255)
-  googleId   String?    @db.VarChar(255)
-  deletedBY  Int        @default(0)
-  isDeleted  Boolean    @default(false)
-  deletedAt  DateTime?  @db.Timestamp(0)
-  createdAt  DateTime   @default(now()) @db.Timestamp(0)
-  updatedAT  DateTime   @default(now()) @db.Timestamp(0)
-  password   String?    @db.VarChar(255)
-  Articles   Articles[]
-  Orders     Orders[]
+  id                Int                 @id @default(autoincrement())
+  email             String?             @unique(map: "email") @db.VarChar(255)
+  fullName          String?             @db.VarChar(255)
+  avatar            String?             @db.Text
+  age               Int?
+  totpSecret        String?             @db.VarChar(255)
+  googleId          String?             @db.VarChar(255)
+  deletedBY         Int                 @default(0)
+  isDeleted         Boolean             @default(false)
+  deletedAt         DateTime?           @db.Timestamp(0)
+  createdAt         DateTime            @default(now()) @db.Timestamp(0)
+  updatedAT         DateTime            @default(now()) @db.Timestamp(0)
+  password          String?             @db.VarChar(255)
+  Articles          Articles[]
+  ChatGroups        ChatGroups[]
+  ChatGroupsMembers ChatGroupsMembers[]
+  ChatMessages      ChatMessages[]
+  Orders            Orders[]
+}
+
+model ChatGroups {
+  id                Int                 @id @default(autoincrement())
+  name              String?             @db.VarChar(255)
+  ownerId           Int?
+  deletedBY         Int                 @default(0)
+  isDeleted         Boolean             @default(false)
+  deletedAt         DateTime?           @db.Timestamp(0)
+  createdAt         DateTime            @default(now()) @db.Timestamp(0)
+  updatedAT         DateTime            @default(now()) @db.Timestamp(0)
+  Users             Users?              @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatGroups_ibfk_1")
+  ChatGroupsMembers ChatGroupsMembers[]
+  ChatMessages      ChatMessages[]
+
+  @@index([ownerId], map: "ownerId")
+}
+
+model ChatGroupsMembers {
+  id          Int         @id @default(autoincrement())
+  userId      Int?
+  chatGroupId Int?
+  deletedBY   Int         @default(0)
+  isDeleted   Boolean     @default(false)
+  deletedAt   DateTime?   @db.Timestamp(0)
+  createdAt   DateTime    @default(now()) @db.Timestamp(0)
+  updatedAT   DateTime    @default(now()) @db.Timestamp(0)
+  Users       Users?      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatGroupsMembers_ibfk_1")
+  ChatGroups  ChatGroups? @relation(fields: [chatGroupId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatGroupsMembers_ibfk_2")
+
+  @@index([chatGroupId], map: "chatGroupId")
+  @@index([userId], map: "userId")
+}
+
+model ChatMessages {
+  id           Int         @id @default(autoincrement())
+  userIdSender Int?
+  chatGroupId  Int?
+  messageText  String?     @db.Text
+  deletedBY    Int         @default(0)
+  isDeleted    Boolean     @default(false)
+  deletedAt    DateTime?   @db.Timestamp(0)
+  createdAt    DateTime    @default(now()) @db.Timestamp(0)
+  updatedAT    DateTime    @default(now()) @db.Timestamp(0)
+  Users        Users?      @relation(fields: [userIdSender], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatMessages_ibfk_1")
+  ChatGroups   ChatGroups? @relation(fields: [chatGroupId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ChatMessages_ibfk_2")
+
+  @@index([chatGroupId], map: "chatGroupId")
+  @@index([userIdSender], map: "userIdSender")
 }

@@ -34,8 +34,8 @@ articleRouter.get(
   },
 
   (req, res, next) => {
-    console.log("Middleware 2");
-    console.log("Payload của mid 1: ", req.payload);
+    // console.log("Middleware 2");
+    // console.log("Payload của mid 1: ", req.payload);
 
     // throw new NotFoundException("Pass không tìm thấy");
 
@@ -43,8 +43,8 @@ articleRouter.get(
   },
 
   (req, res, next) => {
-    console.log("Middleware 3");
-    console.log("Payload của mid 1: ", req.payload);
+    // console.log("Middleware 3");
+    // console.log("Payload của mid 1: ", req.payload);
     next();
   },
 
@@ -53,6 +53,8 @@ articleRouter.get(
 
 // CREATE
 articleRouter.post("/", articleController.create);
+// FindOne
+articleRouter.get("/:articleId", articleController.findOne);
 // UPDATE (Patch / Put)
 articleRouter.put("/:articleId", articleController.update);
 // DELETE

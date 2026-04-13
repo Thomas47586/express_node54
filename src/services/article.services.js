@@ -1,6 +1,4 @@
-import sequelize from "../common/connect.sequelize.js";
 import { prisma } from "../common/prisma/connect.prisma.js";
-import Article from "../models/article.model.js";
 import { buildQueryPrisma } from "../common/helper/build-query-prisma.helper.js";
 
 export const acticleService = {
@@ -39,6 +37,16 @@ export const acticleService = {
       pageSize: pageSize,
       items: resultPrisma,
     };
+  },
+
+  async findOne(request) {
+    const { articleId } = request.params;
+    const result = await prisma.articles.findUnique({
+      where: {
+        id: Number(articleId),
+      },
+    });
+    return result;
   },
 
   // Để nhận được body phải thiết lập middleware JSON ở server.js

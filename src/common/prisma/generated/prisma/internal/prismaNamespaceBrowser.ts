@@ -54,7 +54,10 @@ export const ModelName = {
   Articles: 'Articles',
   Foods: 'Foods',
   Orders: 'Orders',
-  Users: 'Users'
+  Users: 'Users',
+  ChatGroups: 'ChatGroups',
+  ChatGroupsMembers: 'ChatGroupsMembers',
+  ChatMessages: 'ChatMessages'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -132,6 +135,49 @@ export const UsersScalarFieldEnum = {
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+export const ChatGroupsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  ownerId: 'ownerId',
+  deletedBY: 'deletedBY',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAT: 'updatedAT'
+} as const
+
+export type ChatGroupsScalarFieldEnum = (typeof ChatGroupsScalarFieldEnum)[keyof typeof ChatGroupsScalarFieldEnum]
+
+
+export const ChatGroupsMembersScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  chatGroupId: 'chatGroupId',
+  deletedBY: 'deletedBY',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAT: 'updatedAT'
+} as const
+
+export type ChatGroupsMembersScalarFieldEnum = (typeof ChatGroupsMembersScalarFieldEnum)[keyof typeof ChatGroupsMembersScalarFieldEnum]
+
+
+export const ChatMessagesScalarFieldEnum = {
+  id: 'id',
+  userIdSender: 'userIdSender',
+  chatGroupId: 'chatGroupId',
+  messageText: 'messageText',
+  deletedBY: 'deletedBY',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAT: 'updatedAT'
+} as const
+
+export type ChatMessagesScalarFieldEnum = (typeof ChatMessagesScalarFieldEnum)[keyof typeof ChatMessagesScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -175,4 +221,18 @@ export const UsersOrderByRelevanceFieldEnum = {
 } as const
 
 export type UsersOrderByRelevanceFieldEnum = (typeof UsersOrderByRelevanceFieldEnum)[keyof typeof UsersOrderByRelevanceFieldEnum]
+
+
+export const ChatGroupsOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type ChatGroupsOrderByRelevanceFieldEnum = (typeof ChatGroupsOrderByRelevanceFieldEnum)[keyof typeof ChatGroupsOrderByRelevanceFieldEnum]
+
+
+export const ChatMessagesOrderByRelevanceFieldEnum = {
+  messageText: 'messageText'
+} as const
+
+export type ChatMessagesOrderByRelevanceFieldEnum = (typeof ChatMessagesOrderByRelevanceFieldEnum)[keyof typeof ChatMessagesOrderByRelevanceFieldEnum]
 

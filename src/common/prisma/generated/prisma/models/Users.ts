@@ -289,6 +289,9 @@ export type UsersWhereInput = {
   updatedAT?: Prisma.DateTimeFilter<"Users"> | Date | string
   password?: Prisma.StringNullableFilter<"Users"> | string | null
   Articles?: Prisma.ArticlesListRelationFilter
+  ChatGroups?: Prisma.ChatGroupsListRelationFilter
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersListRelationFilter
+  ChatMessages?: Prisma.ChatMessagesListRelationFilter
   Orders?: Prisma.OrdersListRelationFilter
 }
 
@@ -307,6 +310,9 @@ export type UsersOrderByWithRelationInput = {
   updatedAT?: Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   Articles?: Prisma.ArticlesOrderByRelationAggregateInput
+  ChatGroups?: Prisma.ChatGroupsOrderByRelationAggregateInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersOrderByRelationAggregateInput
+  ChatMessages?: Prisma.ChatMessagesOrderByRelationAggregateInput
   Orders?: Prisma.OrdersOrderByRelationAggregateInput
   _relevance?: Prisma.UsersOrderByRelevanceInput
 }
@@ -329,6 +335,9 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   updatedAT?: Prisma.DateTimeFilter<"Users"> | Date | string
   password?: Prisma.StringNullableFilter<"Users"> | string | null
   Articles?: Prisma.ArticlesListRelationFilter
+  ChatGroups?: Prisma.ChatGroupsListRelationFilter
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersListRelationFilter
+  ChatMessages?: Prisma.ChatMessagesListRelationFilter
   Orders?: Prisma.OrdersListRelationFilter
 }, "id" | "email">
 
@@ -386,6 +395,9 @@ export type UsersCreateInput = {
   updatedAT?: Date | string
   password?: string | null
   Articles?: Prisma.ArticlesCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesCreateNestedManyWithoutUsersInput
   Orders?: Prisma.OrdersCreateNestedManyWithoutUsersInput
 }
 
@@ -404,6 +416,9 @@ export type UsersUncheckedCreateInput = {
   updatedAT?: Date | string
   password?: string | null
   Articles?: Prisma.ArticlesUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedCreateNestedManyWithoutUsersInput
   Orders?: Prisma.OrdersUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -421,6 +436,9 @@ export type UsersUpdateInput = {
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Articles?: Prisma.ArticlesUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUpdateManyWithoutUsersNestedInput
   Orders?: Prisma.OrdersUpdateManyWithoutUsersNestedInput
 }
 
@@ -439,6 +457,9 @@ export type UsersUncheckedUpdateInput = {
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Articles?: Prisma.ArticlesUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedUpdateManyWithoutUsersNestedInput
   Orders?: Prisma.OrdersUncheckedUpdateManyWithoutUsersNestedInput
 }
 
@@ -592,6 +613,54 @@ export type UsersUpdateOneWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutOrdersInput, Prisma.UsersUpdateWithoutOrdersInput>, Prisma.UsersUncheckedUpdateWithoutOrdersInput>
 }
 
+export type UsersCreateNestedOneWithoutChatGroupsInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsInput, Prisma.UsersUncheckedCreateWithoutChatGroupsInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatGroupsInput
+  connect?: Prisma.UsersWhereUniqueInput
+}
+
+export type UsersUpdateOneWithoutChatGroupsNestedInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsInput, Prisma.UsersUncheckedCreateWithoutChatGroupsInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatGroupsInput
+  upsert?: Prisma.UsersUpsertWithoutChatGroupsInput
+  disconnect?: Prisma.UsersWhereInput | boolean
+  delete?: Prisma.UsersWhereInput | boolean
+  connect?: Prisma.UsersWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutChatGroupsInput, Prisma.UsersUpdateWithoutChatGroupsInput>, Prisma.UsersUncheckedUpdateWithoutChatGroupsInput>
+}
+
+export type UsersCreateNestedOneWithoutChatGroupsMembersInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedCreateWithoutChatGroupsMembersInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatGroupsMembersInput
+  connect?: Prisma.UsersWhereUniqueInput
+}
+
+export type UsersUpdateOneWithoutChatGroupsMembersNestedInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedCreateWithoutChatGroupsMembersInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatGroupsMembersInput
+  upsert?: Prisma.UsersUpsertWithoutChatGroupsMembersInput
+  disconnect?: Prisma.UsersWhereInput | boolean
+  delete?: Prisma.UsersWhereInput | boolean
+  connect?: Prisma.UsersWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutChatGroupsMembersInput, Prisma.UsersUpdateWithoutChatGroupsMembersInput>, Prisma.UsersUncheckedUpdateWithoutChatGroupsMembersInput>
+}
+
+export type UsersCreateNestedOneWithoutChatMessagesInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatMessagesInput, Prisma.UsersUncheckedCreateWithoutChatMessagesInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatMessagesInput
+  connect?: Prisma.UsersWhereUniqueInput
+}
+
+export type UsersUpdateOneWithoutChatMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.UsersCreateWithoutChatMessagesInput, Prisma.UsersUncheckedCreateWithoutChatMessagesInput>
+  connectOrCreate?: Prisma.UsersCreateOrConnectWithoutChatMessagesInput
+  upsert?: Prisma.UsersUpsertWithoutChatMessagesInput
+  disconnect?: Prisma.UsersWhereInput | boolean
+  delete?: Prisma.UsersWhereInput | boolean
+  connect?: Prisma.UsersWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutChatMessagesInput, Prisma.UsersUpdateWithoutChatMessagesInput>, Prisma.UsersUncheckedUpdateWithoutChatMessagesInput>
+}
+
 export type UsersCreateWithoutArticlesInput = {
   email?: string | null
   fullName?: string | null
@@ -605,6 +674,9 @@ export type UsersCreateWithoutArticlesInput = {
   createdAt?: Date | string
   updatedAT?: Date | string
   password?: string | null
+  ChatGroups?: Prisma.ChatGroupsCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesCreateNestedManyWithoutUsersInput
   Orders?: Prisma.OrdersCreateNestedManyWithoutUsersInput
 }
 
@@ -622,6 +694,9 @@ export type UsersUncheckedCreateWithoutArticlesInput = {
   createdAt?: Date | string
   updatedAT?: Date | string
   password?: string | null
+  ChatGroups?: Prisma.ChatGroupsUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedCreateNestedManyWithoutUsersInput
   Orders?: Prisma.OrdersUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -654,6 +729,9 @@ export type UsersUpdateWithoutArticlesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ChatGroups?: Prisma.ChatGroupsUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUpdateManyWithoutUsersNestedInput
   Orders?: Prisma.OrdersUpdateManyWithoutUsersNestedInput
 }
 
@@ -671,6 +749,9 @@ export type UsersUncheckedUpdateWithoutArticlesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ChatGroups?: Prisma.ChatGroupsUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedUpdateManyWithoutUsersNestedInput
   Orders?: Prisma.OrdersUncheckedUpdateManyWithoutUsersNestedInput
 }
 
@@ -688,6 +769,9 @@ export type UsersCreateWithoutOrdersInput = {
   updatedAT?: Date | string
   password?: string | null
   Articles?: Prisma.ArticlesCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesCreateNestedManyWithoutUsersInput
 }
 
 export type UsersUncheckedCreateWithoutOrdersInput = {
@@ -705,6 +789,9 @@ export type UsersUncheckedCreateWithoutOrdersInput = {
   updatedAT?: Date | string
   password?: string | null
   Articles?: Prisma.ArticlesUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedCreateNestedManyWithoutUsersInput
 }
 
 export type UsersCreateOrConnectWithoutOrdersInput = {
@@ -737,6 +824,9 @@ export type UsersUpdateWithoutOrdersInput = {
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Articles?: Prisma.ArticlesUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUpdateManyWithoutUsersNestedInput
 }
 
 export type UsersUncheckedUpdateWithoutOrdersInput = {
@@ -754,6 +844,291 @@ export type UsersUncheckedUpdateWithoutOrdersInput = {
   updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Articles?: Prisma.ArticlesUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersCreateWithoutChatGroupsInput = {
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersCreateNestedManyWithoutUsersInput
+}
+
+export type UsersUncheckedCreateWithoutChatGroupsInput = {
+  id?: number
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersUncheckedCreateNestedManyWithoutUsersInput
+}
+
+export type UsersCreateOrConnectWithoutChatGroupsInput = {
+  where: Prisma.UsersWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsInput, Prisma.UsersUncheckedCreateWithoutChatGroupsInput>
+}
+
+export type UsersUpsertWithoutChatGroupsInput = {
+  update: Prisma.XOR<Prisma.UsersUpdateWithoutChatGroupsInput, Prisma.UsersUncheckedUpdateWithoutChatGroupsInput>
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsInput, Prisma.UsersUncheckedCreateWithoutChatGroupsInput>
+  where?: Prisma.UsersWhereInput
+}
+
+export type UsersUpdateToOneWithWhereWithoutChatGroupsInput = {
+  where?: Prisma.UsersWhereInput
+  data: Prisma.XOR<Prisma.UsersUpdateWithoutChatGroupsInput, Prisma.UsersUncheckedUpdateWithoutChatGroupsInput>
+}
+
+export type UsersUpdateWithoutChatGroupsInput = {
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersUncheckedUpdateWithoutChatGroupsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUncheckedUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersCreateWithoutChatGroupsMembersInput = {
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersCreateNestedManyWithoutUsersInput
+}
+
+export type UsersUncheckedCreateWithoutChatGroupsMembersInput = {
+  id?: number
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedCreateNestedManyWithoutUsersInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersUncheckedCreateNestedManyWithoutUsersInput
+}
+
+export type UsersCreateOrConnectWithoutChatGroupsMembersInput = {
+  where: Prisma.UsersWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedCreateWithoutChatGroupsMembersInput>
+}
+
+export type UsersUpsertWithoutChatGroupsMembersInput = {
+  update: Prisma.XOR<Prisma.UsersUpdateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedUpdateWithoutChatGroupsMembersInput>
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedCreateWithoutChatGroupsMembersInput>
+  where?: Prisma.UsersWhereInput
+}
+
+export type UsersUpdateToOneWithWhereWithoutChatGroupsMembersInput = {
+  where?: Prisma.UsersWhereInput
+  data: Prisma.XOR<Prisma.UsersUpdateWithoutChatGroupsMembersInput, Prisma.UsersUncheckedUpdateWithoutChatGroupsMembersInput>
+}
+
+export type UsersUpdateWithoutChatGroupsMembersInput = {
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersUncheckedUpdateWithoutChatGroupsMembersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedUpdateManyWithoutUsersNestedInput
+  ChatMessages?: Prisma.ChatMessagesUncheckedUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUncheckedUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersCreateWithoutChatMessagesInput = {
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersCreateNestedManyWithoutUsersInput
+}
+
+export type UsersUncheckedCreateWithoutChatMessagesInput = {
+  id?: number
+  email?: string | null
+  fullName?: string | null
+  avatar?: string | null
+  age?: number | null
+  totpSecret?: string | null
+  googleId?: string | null
+  deletedBY?: number
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAT?: Date | string
+  password?: string | null
+  Articles?: Prisma.ArticlesUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedCreateNestedManyWithoutUsersInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedCreateNestedManyWithoutUsersInput
+  Orders?: Prisma.OrdersUncheckedCreateNestedManyWithoutUsersInput
+}
+
+export type UsersCreateOrConnectWithoutChatMessagesInput = {
+  where: Prisma.UsersWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatMessagesInput, Prisma.UsersUncheckedCreateWithoutChatMessagesInput>
+}
+
+export type UsersUpsertWithoutChatMessagesInput = {
+  update: Prisma.XOR<Prisma.UsersUpdateWithoutChatMessagesInput, Prisma.UsersUncheckedUpdateWithoutChatMessagesInput>
+  create: Prisma.XOR<Prisma.UsersCreateWithoutChatMessagesInput, Prisma.UsersUncheckedCreateWithoutChatMessagesInput>
+  where?: Prisma.UsersWhereInput
+}
+
+export type UsersUpdateToOneWithWhereWithoutChatMessagesInput = {
+  where?: Prisma.UsersWhereInput
+  data: Prisma.XOR<Prisma.UsersUpdateWithoutChatMessagesInput, Prisma.UsersUncheckedUpdateWithoutChatMessagesInput>
+}
+
+export type UsersUpdateWithoutChatMessagesInput = {
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUpdateManyWithoutUsersNestedInput
+}
+
+export type UsersUncheckedUpdateWithoutChatMessagesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totpSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedBY?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAT?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Articles?: Prisma.ArticlesUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroups?: Prisma.ChatGroupsUncheckedUpdateManyWithoutUsersNestedInput
+  ChatGroupsMembers?: Prisma.ChatGroupsMembersUncheckedUpdateManyWithoutUsersNestedInput
+  Orders?: Prisma.OrdersUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 
@@ -763,11 +1138,17 @@ export type UsersUncheckedUpdateWithoutOrdersInput = {
 
 export type UsersCountOutputType = {
   Articles: number
+  ChatGroups: number
+  ChatGroupsMembers: number
+  ChatMessages: number
   Orders: number
 }
 
 export type UsersCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Articles?: boolean | UsersCountOutputTypeCountArticlesArgs
+  ChatGroups?: boolean | UsersCountOutputTypeCountChatGroupsArgs
+  ChatGroupsMembers?: boolean | UsersCountOutputTypeCountChatGroupsMembersArgs
+  ChatMessages?: boolean | UsersCountOutputTypeCountChatMessagesArgs
   Orders?: boolean | UsersCountOutputTypeCountOrdersArgs
 }
 
@@ -786,6 +1167,27 @@ export type UsersCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
  */
 export type UsersCountOutputTypeCountArticlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ArticlesWhereInput
+}
+
+/**
+ * UsersCountOutputType without action
+ */
+export type UsersCountOutputTypeCountChatGroupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChatGroupsWhereInput
+}
+
+/**
+ * UsersCountOutputType without action
+ */
+export type UsersCountOutputTypeCountChatGroupsMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChatGroupsMembersWhereInput
+}
+
+/**
+ * UsersCountOutputType without action
+ */
+export type UsersCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChatMessagesWhereInput
 }
 
 /**
@@ -811,6 +1213,9 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   updatedAT?: boolean
   password?: boolean
   Articles?: boolean | Prisma.Users$ArticlesArgs<ExtArgs>
+  ChatGroups?: boolean | Prisma.Users$ChatGroupsArgs<ExtArgs>
+  ChatGroupsMembers?: boolean | Prisma.Users$ChatGroupsMembersArgs<ExtArgs>
+  ChatMessages?: boolean | Prisma.Users$ChatMessagesArgs<ExtArgs>
   Orders?: boolean | Prisma.Users$OrdersArgs<ExtArgs>
   _count?: boolean | Prisma.UsersCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["users"]>
@@ -836,6 +1241,9 @@ export type UsersSelectScalar = {
 export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "fullName" | "avatar" | "age" | "totpSecret" | "googleId" | "deletedBY" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAT" | "password", ExtArgs["result"]["users"]>
 export type UsersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Articles?: boolean | Prisma.Users$ArticlesArgs<ExtArgs>
+  ChatGroups?: boolean | Prisma.Users$ChatGroupsArgs<ExtArgs>
+  ChatGroupsMembers?: boolean | Prisma.Users$ChatGroupsMembersArgs<ExtArgs>
+  ChatMessages?: boolean | Prisma.Users$ChatMessagesArgs<ExtArgs>
   Orders?: boolean | Prisma.Users$OrdersArgs<ExtArgs>
   _count?: boolean | Prisma.UsersCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -844,6 +1252,9 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name: "Users"
   objects: {
     Articles: Prisma.$ArticlesPayload<ExtArgs>[]
+    ChatGroups: Prisma.$ChatGroupsPayload<ExtArgs>[]
+    ChatGroupsMembers: Prisma.$ChatGroupsMembersPayload<ExtArgs>[]
+    ChatMessages: Prisma.$ChatMessagesPayload<ExtArgs>[]
     Orders: Prisma.$OrdersPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1201,6 +1612,9 @@ readonly fields: UsersFieldRefs;
 export interface Prisma__UsersClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   Articles<T extends Prisma.Users$ArticlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$ArticlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticlesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ChatGroups<T extends Prisma.Users$ChatGroupsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$ChatGroupsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatGroupsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ChatGroupsMembers<T extends Prisma.Users$ChatGroupsMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$ChatGroupsMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatGroupsMembersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ChatMessages<T extends Prisma.Users$ChatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$ChatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Orders<T extends Prisma.Users$OrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Users$OrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrdersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1608,6 +2022,78 @@ export type Users$ArticlesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.ArticlesScalarFieldEnum | Prisma.ArticlesScalarFieldEnum[]
+}
+
+/**
+ * Users.ChatGroups
+ */
+export type Users$ChatGroupsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChatGroups
+   */
+  select?: Prisma.ChatGroupsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChatGroups
+   */
+  omit?: Prisma.ChatGroupsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChatGroupsInclude<ExtArgs> | null
+  where?: Prisma.ChatGroupsWhereInput
+  orderBy?: Prisma.ChatGroupsOrderByWithRelationInput | Prisma.ChatGroupsOrderByWithRelationInput[]
+  cursor?: Prisma.ChatGroupsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChatGroupsScalarFieldEnum | Prisma.ChatGroupsScalarFieldEnum[]
+}
+
+/**
+ * Users.ChatGroupsMembers
+ */
+export type Users$ChatGroupsMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChatGroupsMembers
+   */
+  select?: Prisma.ChatGroupsMembersSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChatGroupsMembers
+   */
+  omit?: Prisma.ChatGroupsMembersOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChatGroupsMembersInclude<ExtArgs> | null
+  where?: Prisma.ChatGroupsMembersWhereInput
+  orderBy?: Prisma.ChatGroupsMembersOrderByWithRelationInput | Prisma.ChatGroupsMembersOrderByWithRelationInput[]
+  cursor?: Prisma.ChatGroupsMembersWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChatGroupsMembersScalarFieldEnum | Prisma.ChatGroupsMembersScalarFieldEnum[]
+}
+
+/**
+ * Users.ChatMessages
+ */
+export type Users$ChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChatMessages
+   */
+  select?: Prisma.ChatMessagesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChatMessages
+   */
+  omit?: Prisma.ChatMessagesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChatMessagesInclude<ExtArgs> | null
+  where?: Prisma.ChatMessagesWhereInput
+  orderBy?: Prisma.ChatMessagesOrderByWithRelationInput | Prisma.ChatMessagesOrderByWithRelationInput[]
+  cursor?: Prisma.ChatMessagesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChatMessagesScalarFieldEnum | Prisma.ChatMessagesScalarFieldEnum[]
 }
 
 /**

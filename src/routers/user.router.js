@@ -23,4 +23,7 @@ userRouter.post(
   userController.avatarCloud,
 );
 
+userRouter.get("", protect, userController.findAll);
+userRouter.get("/:id", protect, userController.findOne);
+
 export default userRouter;

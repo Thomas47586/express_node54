@@ -3,6 +3,7 @@ import { prisma } from "../common/prisma/connect.prisma.js";
 import fs from "fs";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import { buildQueryPrisma } from "../common/helper/build-query-prisma.helper.js";
 
 // Return "https" URLs by setting secure: true
 cloudinary.config({
@@ -13,6 +14,52 @@ cloudinary.config({
 });
 
 export const userService = {
+  async findAll(req) {
+    // QUERY:
+    // Thường dùng phân trang, lọc, tìm kiếm
+
+    // sequelize
+    // const resultSequelize = await Article.findAll();
+
+    const { page, pageSize, index, where } = buildQueryPrisma(req);
+
+    const resultPrismaPromise = await prisma.users.findMany({
+      where: where,
+      skip: index, // Skip tương đương OFFSET
+      take: pageSize, // Take tương đương với LIMIT
+    });
+
+    const totalItemsPromise = await prisma.users.count({
+      where: where,
+    });
+
+    // Chạy đồng thời
+    const [resultPrisma, totalItems] = await Promise.all([
+      resultPrismaPromise,
+      totalItemsPromise,
+    ]);
+
+    const totalPages = Math.ceil(totalItems / pageSize);
+
+    return {
+      totalItems: totalItems,
+      totalPages: totalPages,
+      page: page,
+      pageSize: pageSize,
+      items: resultPrisma,
+    };
+  },
+
+  async findOne(req) {
+    const { id } = req.params;
+    const result = await prisma.users.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+    return result;
+  },
+
   async avatarLocal(req) {
     if (!req.file) {
       throw new BadRequestException("File not found");

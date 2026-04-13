@@ -17,6 +17,19 @@ export const articleController = {
     res.status(response.statusCode).json(response);
   },
 
+  // Lấy chi tiết 1 Article
+  async findOne(request, res, next) {
+    // console.log("articleController", request.payload);
+
+    // Call services => Trả ra kết quả Article - List
+    const result = await acticleService.findOne(request);
+    const response = responseSuccess(
+      result,
+      "Lấy chi tiết 1 Article thành công",
+    );
+    res.status(response.statusCode).json(response);
+  },
+
   // Phương thức (method) để tạo bài viết mới
   async create(request, res, next) {
     // Call services => Trả ra kết quả Article - Object

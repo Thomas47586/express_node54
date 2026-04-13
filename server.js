@@ -5,6 +5,9 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { logApi } from "./src/common/middlewares/log-api.middleware.js";
 import { initLoginGooglePassport } from "./src/common/passport/login-google.passport.js";
+import swaggerUi from "swagger-ui-express";
+import { swaggerDocument } from "./src/common/swagger/init.swagger.js";
+import { initSocket } from "./src/common/socket/init.socket.js";
 
 const app = express();
 
@@ -55,12 +58,14 @@ app.use("/api", rootRouter);
 // Middleware xử lý lỗi
 app.use(appError);
 
+const httpServer = initSocket(app);
+
 //  Hàm Listen online 1 cổng
 // Ở đây mình sử dụng cổng 3000
 // Callback chỉ chạy khi backend online thành công => listen thành công
 // Nên để listen ở cuối file
 const PORT = 3069;
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
